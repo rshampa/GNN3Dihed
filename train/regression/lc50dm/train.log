@@ -1,0 +1,114 @@
+Loading dataset from folder
+Initializing Molecular Representation Generator
+Dataset Name: ToxQ
+Number of Molecules Loaded: 316
+===================================
+Loading dataset from folder
+Initializing Molecular Representation Generator
+Dataset Name: ToxQ
+Number of Molecules Loaded: 36
+===================================
+Training for random_state = 98
+Epoch:   0 | RMSE Train  Loss: 1.5813 | MSE Train Loss: 4.3193 | RMSE Val  Loss: 0.8467 | MSE Val Loss: 1.1097
+Epoch:   1 | RMSE Train  Loss: 1.0577 | MSE Train Loss: 1.8908 | RMSE Val  Loss: 0.8257 | MSE Val Loss: 0.9776
+Epoch:   2 | RMSE Train  Loss: 0.9497 | MSE Train Loss: 1.5739 | RMSE Val  Loss: 0.9487 | MSE Val Loss: 1.2662
+Epoch:   3 | RMSE Train  Loss: 0.8807 | MSE Train Loss: 1.3867 | RMSE Val  Loss: 1.0495 | MSE Val Loss: 1.5666
+Epoch:   4 | RMSE Train  Loss: 0.8581 | MSE Train Loss: 1.2700 | RMSE Val  Loss: 0.8898 | MSE Val Loss: 1.0698
+Epoch:   5 | RMSE Train  Loss: 0.8254 | MSE Train Loss: 1.2055 | RMSE Val  Loss: 0.8205 | MSE Val Loss: 0.9256
+Epoch:   6 | RMSE Train  Loss: 0.8050 | MSE Train Loss: 1.1207 | RMSE Val  Loss: 0.7472 | MSE Val Loss: 0.8738
+Epoch:   7 | RMSE Train  Loss: 0.7822 | MSE Train Loss: 1.0551 | RMSE Val  Loss: 0.7523 | MSE Val Loss: 0.9043
+Epoch:   8 | RMSE Train  Loss: 0.7426 | MSE Train Loss: 0.9511 | RMSE Val  Loss: 0.9135 | MSE Val Loss: 1.2660
+Epoch:   9 | RMSE Train  Loss: 0.7488 | MSE Train Loss: 0.9597 | RMSE Val  Loss: 0.7981 | MSE Val Loss: 1.0324
+Model saved to ./models/gnn3d_lc50dm.pth
+Time taken for training: 0 hours, 0 minutes, 19 seconds
+Test Results:
+RMSE Loss: 0.8583
+MSE Loss: 1.0203
+Time taken for training and evaluation: 0 hours, 0 minutes, 19 seconds
+Training for random_state = 123
+Epoch:   0 | RMSE Train  Loss: 1.3643 | MSE Train Loss: 3.6412 | RMSE Val  Loss: 1.1948 | MSE Val Loss: 2.0305
+Epoch:   1 | RMSE Train  Loss: 1.0129 | MSE Train Loss: 1.7446 | RMSE Val  Loss: 0.9520 | MSE Val Loss: 1.2249
+Epoch:   2 | RMSE Train  Loss: 0.8868 | MSE Train Loss: 1.4211 | RMSE Val  Loss: 0.9126 | MSE Val Loss: 1.1995
+Epoch:   3 | RMSE Train  Loss: 0.8523 | MSE Train Loss: 1.2701 | RMSE Val  Loss: 0.9014 | MSE Val Loss: 1.1815
+Epoch:   4 | RMSE Train  Loss: 0.8416 | MSE Train Loss: 1.2104 | RMSE Val  Loss: 0.9643 | MSE Val Loss: 1.2346
+Epoch:   5 | RMSE Train  Loss: 0.7734 | MSE Train Loss: 1.0728 | RMSE Val  Loss: 0.9726 | MSE Val Loss: 1.3286
+Epoch:   6 | RMSE Train  Loss: 0.7719 | MSE Train Loss: 1.0042 | RMSE Val  Loss: 0.9707 | MSE Val Loss: 1.3696
+Epoch:   7 | RMSE Train  Loss: 0.7462 | MSE Train Loss: 0.9905 | RMSE Val  Loss: 0.9122 | MSE Val Loss: 1.2079
+Epoch:   8 | RMSE Train  Loss: 0.7254 | MSE Train Loss: 0.9174 | RMSE Val  Loss: 1.0022 | MSE Val Loss: 1.5071
+Epoch:   9 | RMSE Train  Loss: 0.7179 | MSE Train Loss: 0.8649 | RMSE Val  Loss: 0.8794 | MSE Val Loss: 1.1954
+Model saved to ./models/gnn3d_lc50dm.pth
+Time taken for training: 0 hours, 0 minutes, 18 seconds
+Test Results:
+RMSE Loss: 0.8206
+MSE Loss: 0.9459
+Time taken for training and evaluation: 0 hours, 0 minutes, 18 seconds
+Training for random_state = 456
+Epoch:   0 | RMSE Train  Loss: 1.4799 | MSE Train Loss: 4.1319 | RMSE Val  Loss: 1.3444 | MSE Val Loss: 2.2746
+Epoch:   1 | RMSE Train  Loss: 1.0613 | MSE Train Loss: 1.8749 | RMSE Val  Loss: 0.7389 | MSE Val Loss: 0.8098
+Epoch:   2 | RMSE Train  Loss: 0.9332 | MSE Train Loss: 1.4916 | RMSE Val  Loss: 0.6216 | MSE Val Loss: 0.7465
+Epoch:   3 | RMSE Train  Loss: 0.8908 | MSE Train Loss: 1.3686 | RMSE Val  Loss: 0.6604 | MSE Val Loss: 0.7751
+Epoch:   4 | RMSE Train  Loss: 0.8660 | MSE Train Loss: 1.2526 | RMSE Val  Loss: 0.6803 | MSE Val Loss: 0.9400
+Epoch:   5 | RMSE Train  Loss: 0.8530 | MSE Train Loss: 1.1716 | RMSE Val  Loss: 0.6112 | MSE Val Loss: 0.6979
+Epoch:   6 | RMSE Train  Loss: 0.7992 | MSE Train Loss: 1.0608 | RMSE Val  Loss: 0.6086 | MSE Val Loss: 0.6793
+Epoch:   7 | RMSE Train  Loss: 0.7888 | MSE Train Loss: 1.0063 | RMSE Val  Loss: 0.5971 | MSE Val Loss: 0.6943
+Epoch:   8 | RMSE Train  Loss: 0.7942 | MSE Train Loss: 1.0484 | RMSE Val  Loss: 0.5859 | MSE Val Loss: 0.6498
+Epoch:   9 | RMSE Train  Loss: 0.7355 | MSE Train Loss: 0.9194 | RMSE Val  Loss: 0.6397 | MSE Val Loss: 0.9009
+Model saved to ./models/gnn3d_lc50dm.pth
+Time taken for training: 0 hours, 0 minutes, 18 seconds
+Test Results:
+RMSE Loss: 0.9460
+MSE Loss: 1.2602
+Time taken for training and evaluation: 0 hours, 0 minutes, 18 seconds
+Training for random_state = 1704
+Epoch:   0 | RMSE Train  Loss: 1.4554 | MSE Train Loss: 3.8181 | RMSE Val  Loss: 1.0081 | MSE Val Loss: 1.6992
+Epoch:   1 | RMSE Train  Loss: 1.0177 | MSE Train Loss: 1.7095 | RMSE Val  Loss: 0.9383 | MSE Val Loss: 1.9802
+Epoch:   2 | RMSE Train  Loss: 0.9350 | MSE Train Loss: 1.4644 | RMSE Val  Loss: 0.9246 | MSE Val Loss: 1.7525
+Epoch:   3 | RMSE Train  Loss: 0.8266 | MSE Train Loss: 1.1801 | RMSE Val  Loss: 0.9042 | MSE Val Loss: 1.6741
+Epoch:   4 | RMSE Train  Loss: 0.8082 | MSE Train Loss: 1.0941 | RMSE Val  Loss: 0.9077 | MSE Val Loss: 1.7169
+Epoch:   5 | RMSE Train  Loss: 0.8033 | MSE Train Loss: 1.0631 | RMSE Val  Loss: 0.9300 | MSE Val Loss: 1.8282
+Epoch:   6 | RMSE Train  Loss: 0.7458 | MSE Train Loss: 0.9535 | RMSE Val  Loss: 0.9501 | MSE Val Loss: 1.8095
+Epoch:   7 | RMSE Train  Loss: 0.7110 | MSE Train Loss: 0.8737 | RMSE Val  Loss: 0.8129 | MSE Val Loss: 1.5236
+Epoch:   8 | RMSE Train  Loss: 0.7181 | MSE Train Loss: 0.8645 | RMSE Val  Loss: 1.0732 | MSE Val Loss: 2.0822
+Epoch:   9 | RMSE Train  Loss: 0.7095 | MSE Train Loss: 0.8285 | RMSE Val  Loss: 0.9594 | MSE Val Loss: 1.7844
+Model saved to ./models/gnn3d_lc50dm.pth
+Time taken for training: 0 hours, 0 minutes, 18 seconds
+Test Results:
+RMSE Loss: 0.8485
+MSE Loss: 1.0520
+Time taken for training and evaluation: 0 hours, 0 minutes, 18 seconds
+Training for random_state = 19472
+Epoch:   0 | RMSE Train  Loss: 1.4575 | MSE Train Loss: 3.9109 | RMSE Val  Loss: 1.4476 | MSE Val Loss: 2.7519
+Epoch:   1 | RMSE Train  Loss: 1.0441 | MSE Train Loss: 1.8539 | RMSE Val  Loss: 0.9699 | MSE Val Loss: 1.5282
+Epoch:   2 | RMSE Train  Loss: 0.9559 | MSE Train Loss: 1.5737 | RMSE Val  Loss: 0.8048 | MSE Val Loss: 1.3360
+Epoch:   3 | RMSE Train  Loss: 0.8698 | MSE Train Loss: 1.3168 | RMSE Val  Loss: 0.8743 | MSE Val Loss: 1.4167
+Epoch:   4 | RMSE Train  Loss: 0.8587 | MSE Train Loss: 1.2165 | RMSE Val  Loss: 0.8550 | MSE Val Loss: 1.1779
+Epoch:   5 | RMSE Train  Loss: 0.8015 | MSE Train Loss: 1.0853 | RMSE Val  Loss: 0.9714 | MSE Val Loss: 1.3008
+Epoch:   6 | RMSE Train  Loss: 0.7713 | MSE Train Loss: 1.0037 | RMSE Val  Loss: 0.8484 | MSE Val Loss: 1.1714
+Epoch:   7 | RMSE Train  Loss: 0.7637 | MSE Train Loss: 0.9727 | RMSE Val  Loss: 0.7705 | MSE Val Loss: 1.2560
+Epoch:   8 | RMSE Train  Loss: 0.7151 | MSE Train Loss: 0.8879 | RMSE Val  Loss: 0.8801 | MSE Val Loss: 1.1975
+Epoch:   9 | RMSE Train  Loss: 0.7159 | MSE Train Loss: 0.8650 | RMSE Val  Loss: 0.7313 | MSE Val Loss: 1.1264
+Model saved to ./models/gnn3d_lc50dm.pth
+Time taken for training: 0 hours, 0 minutes, 18 seconds
+Test Results:
+RMSE Loss: 0.7989
+MSE Loss: 0.9236
+Time taken for training and evaluation: 0 hours, 0 minutes, 18 seconds
+RMSE Losses Train: [[1.5812617561347049, 1.0577384225079711, 0.9496611646363433, 0.8807077789810341, 0.8580708747178736, 0.8253982283279929, 0.8050440900342565, 0.782229278498972, 0.742558703666002, 0.7488068272949944], [1.3642810633484745, 1.0129292890639372, 0.8867616208506303, 0.8523065365955863, 0.8416264680489688, 0.7733561029316673, 0.771890715604097, 0.7462044549240193, 0.725374709762318, 0.7179061168096434], [1.479912840564486, 1.0612733716696081, 0.9331710838096242, 0.8907798270524387, 0.8659670804168137, 0.8529660317679526, 0.7992204522163096, 0.7887842632095579, 0.7941835894131325, 0.7354885937882142], [1.455367562216772, 1.017735482101709, 0.9350473553362028, 0.8266479605940026, 0.8082418299057115, 0.8033145498222029, 0.7457821589540428, 0.7110453963699476, 0.7181109053568101, 0.7094887772076567], [1.457463968387792, 1.0440823712819058, 0.9559343721665127, 0.8697709298469651, 0.8587200452744121, 0.8014711645287527, 0.7712915304680945, 0.7636748686642714, 0.7151499747390478, 0.7159306696602996]]
+RMSE Losses Val: [[0.8467352613806725, 0.8256921321153641, 0.9487407132983208, 1.0494846403598785, 0.8898436687886715, 0.8204509131610394, 0.7471739538013935, 0.7522672936320305, 0.9134647697210312, 0.7981249503791332], [1.1948297284543514, 0.9519962966442108, 0.9126369878649712, 0.9013955406844616, 0.9642781354486942, 0.9726253412663937, 0.9706981666386127, 0.9121727384626865, 1.002205204218626, 0.8794160149991512], [1.3444246053695679, 0.7388754487037659, 0.621600367128849, 0.6603976488113403, 0.6803363412618637, 0.6112016886472702, 0.6086311191320419, 0.5970605202019215, 0.5859046652913094, 0.6396897360682487], [1.0081401094794273, 0.9382812976837158, 0.924596980214119, 0.9041822552680969, 0.9076838046312332, 0.9299960881471634, 0.950110774487257, 0.8128703832626343, 1.0732252784073353, 0.9594295397400856], [1.447604924440384, 0.9699169881641865, 0.8048091344535351, 0.8743426632136106, 0.8549874294549227, 0.9714042358100414, 0.8484343681484461, 0.7705093864351511, 0.8801074121147394, 0.7312861550599337]]
+Epoch | Average Training Loss | Average Validation Loss
+    0 | 1.4677                | 1.1683
+    1 | 1.0388                | 0.8850
+    2 | 0.9321                | 0.8425
+    3 | 0.8640                | 0.8780
+    4 | 0.8465                | 0.8594
+    5 | 0.8113                | 0.8611
+    6 | 0.7786                | 0.8250
+    7 | 0.7584                | 0.7690
+    8 | 0.7391                | 0.8910
+    9 | 0.7255                | 0.8016
+Pearson Correlation Coefficient: 0.8219
+Coefficient of Determination R^2: 0.6619
+Filtered Predictions shape: (35,)
+Filtered Targets shape: (35,)
+Pearson Correlation Coefficient after removing outlier: 0.8447
+Coefficient of Determination R² after removing outlier: 0.7078

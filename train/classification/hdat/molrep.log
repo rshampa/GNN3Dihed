@@ -1,0 +1,20 @@
+cpu
+Train and test datasets saved successfully.
+Loading dataset from folder
+Initializing Molecular Representation Generator
+Dataset Name: ToxQ
+Number of Molecules Loaded: 452
+===================================
+Loading dataset from folder
+Initializing Molecular Representation Generator
+Dataset Name: ToxQ
+Number of Molecules Loaded: 51
+Atomic Features: torch.Size([46, 154]) - This represents the atomic features of the molecule
+Bond Features: torch.Size([98, 10]) - This represents the bond features of the molecule
+Angle Features: torch.Size([188]) - This represents the angle features of the molecule
+Dihedral Features: torch.Size([324]) - This represents the dihedral features of the molecule
+Global Molecular Features: torch.Size([200]) - This represents the global molecular features of the molecule
+Bond Indices: torch.Size([98, 2]) - This represents the bond indices of the molecule
+Angle Indices: torch.Size([188, 2]) - This represents the angle indices of the molecule
+Dihedral Indices: torch.Size([324, 2]) - This represents the dihedral indices of the molecule
+Target: torch.Size([1]) - This represents the target of the molecule
