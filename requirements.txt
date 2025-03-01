@@ -1,6 +1,5 @@
 descriptastorus==2.6.1
-matplotlib==3.8.4
-notebook
+matplotlib
 numpy==1.26.4
 openbabel-wheel==3.1.1.19
 pandas==2.2.2
@@ -8,5 +7,18 @@ py3Dmol==2.1.0
 rdkit==2024.3.3
 qm9pack==1.0.1
 scikit_learn==1.5.1
-torch==2.2.2
+
+# PyTorch 2.3.1 CPU-only:
+torch==2.3.1
+torchvision==0.18.1
+torchaudio==2.3.1
+
+# PyTorch 2.3.1 with CUDA 11.8:
+torch==2.3.1+cu118
+torchvision==0.18.1+cu118
+torchaudio==2.3.1
+-f https://download.pytorch.org/whl/torch_stable.html
+
 tqdm==4.64.1
+notebook
+xlsxwriter
