@@ -104,7 +104,7 @@ Make sure you have the following software installed:
    ./runme.sh
 ```
 
-  - Classification  task: An example for hdat dataset
+  - Classification  task: An example for hDAT dataset
 
 ### Steps to generate features and train a model
 
