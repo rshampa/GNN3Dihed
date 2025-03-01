@@ -104,14 +104,14 @@ Make sure you have the following software installed:
    ./runme.sh
 ```
 
-  - Classification  task: An example for bbbp dataset
+  - Classification  task: An example for hdat dataset
 
 ### Steps to generate features and train a model
 
-1. Go to bbbp folder:
+1. Go to hdat folder:
 
 ```
-   cd train/classification/bbbp
+   cd train/classification/hdat
 ```
 
 2. Run runme.sh:
