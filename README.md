@@ -4,10 +4,13 @@
 
 ## Directory Structure
 
-  Data, train, and notebooks have similar regression and classification directory structures.  
+  data, train, and notebooks have similar regression and classification directory structures.  
 
 ```
 root/
+  ├── LICENSE
+  ├── README.md
+  ├── requirements.txt
   ├── src/
   │   ├── __init__.py
   │   ├── config.py
@@ -26,7 +29,6 @@ root/
   │   │       ├── test/
   │   │       │   ├── *_features.npy
   │   │       │   └── *_indices.npy
-  │   │       └── README.md
   ├── train/
   │   ├── regression/
   │   │   └── datasetname/
@@ -125,7 +127,9 @@ Make sure you have the following software installed:
 ## Citation
 
    If you find this repository useful, please cite our paper:
+```
    Reddy Sangala SA, Raghunathan S. Graph neural network for 3-dimensional structures including dihedral angles for molecular property prediction. ChemRxiv. 2024; https://doi.org/10.26434/chemrxiv-2024-jlwh5
+```
 
 ## Contact
 
