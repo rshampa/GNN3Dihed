@@ -62,7 +62,7 @@ Make sure you have the following software installed:
 - Python 3.12
 - Conda (or Pip if using an environment manager other than Conda)
 
-### Steps to Install
+### Steps to install
 
 1. Clone the repository:
 
