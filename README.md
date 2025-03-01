@@ -59,8 +59,7 @@ root/
 
 Make sure you have the following software installed:
 
-- Python 3.12
-- Conda (or Pip if using an environment manager other than Conda)
+- Conda (or pip if using an environment manager other than conda)
 
 ### Steps to install
 
