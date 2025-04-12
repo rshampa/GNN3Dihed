@@ -1,0 +1,124 @@
+cpu
+Train and test datasets saved successfully.
+Loading Raw Data and processing it
+Initializing Molecular Representation Generator
+Loading Molecular Representations
+Skipping molecule: 7 | SMILES: OCC1C2CC1C2C=O
+Skipping molecule: 10 | SMILES: OC1C2C3N2CC13C#C
+Skipping molecule: 76 | SMILES: O=CC12OC3C1C2C3=O
+Skipping molecule: 78 | SMILES: CC12NC1C1C2OC1=O
+Skipping molecule: 69 | SMILES: OCC1N2C3CC1(O)C23
+Skipping molecule: 87 | SMILES: O=CNC1C2C3OC1C23
+Skipping molecule: 38 | SMILES: OC1CC23CC(CO2)C13
+Skipping molecule: 83 | SMILES: CC1(NC2COC12)C=O
+Skipping molecule: 16 | SMILES: CNC12CN=C3NC1C23
+Skipping molecule: 98 | SMILES: CCC12OC(C1O)C2O
+Skipping molecule: 109 | SMILES: OC12C=CC34OC(C13)C24
+Skipping molecule: 84 | SMILES: C1CC23C1C1C2C=CC31
+Skipping molecule: 90 | SMILES: OC1CC2C3CC12CO3
+Skipping molecule: 105 | SMILES: CC12C3C1N1C3C2C1=O
+Skipping molecule: 103 | SMILES: N1C2C=CC3C4OC23C14
+Skipping molecule: 110 | SMILES: CC1OC11C2CC1C2O
+Skipping molecule: 148 | SMILES: N#CC1C2OC1C21OC1
+Skipping molecule: 165 | SMILES: CC12OCOC3C1OC23
+Skipping molecule: 158 | SMILES: CC1OC2C1NC2=N
+Skipping molecule: 140 | SMILES: C1OC2C3CC=CC12O3
+Skipping molecule: 136 | SMILES: CC(=O)C1N2CC1(C)C2
+Skipping molecule: 198 | SMILES: OC1C2CC3CCC1N23
+Skipping molecule: 207 | SMILES: CC12CC(C1)C2OC=N
+Skipping molecule: 201 | SMILES: OC12C3C1N1C=NC2C31
+Skipping molecule: 213 | SMILES: OC12CC(C1)C2C1CO1
+Skipping molecule: 155 | SMILES: CC12CC(O1)C21CC1O
+Skipping molecule: 225 | SMILES: C1OC11C2OC1C21CO1
+Skipping molecule: 205 | SMILES: C1C2N1C1CC22COC12
+Skipping molecule: 175 | SMILES: CC1C2C3OC2C(C)C13
+Skipping molecule: 229 | SMILES: OC1CC11CC2OCC12
+Skipping molecule: 300 | SMILES: CC1(O)CN2CC(=O)C12
+Skipping molecule: 244 | SMILES: OC1C2COC11CCC21
+Skipping molecule: 315 | SMILES: COCC1C2CC1C2
+Skipping molecule: 233 | SMILES: C1CC23CCC(C2)OC13
+Skipping molecule: 325 | SMILES: CC12OCC1(O)C1OC21
+Skipping molecule: 305 | SMILES: OCCC12COC1CN2
+Skipping molecule: 304 | SMILES: OCCC1C2C3OC1C23
+Skipping molecule: 249 | SMILES: CC(C)C1CC2OCC12
+Skipping molecule: 348 | SMILES: CC12CC3N1CC23C=O
+Skipping molecule: 402 | SMILES: O=C1C2CC3(C#N)C2N13
+Skipping molecule: 332 | SMILES: CC12NC1C1(C)COC21
+Skipping molecule: 371 | SMILES: C1OC2CC34CC(O3)C124
+Skipping molecule: 394 | SMILES: OC1C2CC3C(O)C1N23
+Skipping molecule: 390 | SMILES: NC(=O)C12CNC1CN2
+Skipping molecule: 424 | SMILES: NC(=O)C1N2CC1(O)C2
+Skipping molecule: 466 | SMILES: OC12C3OC1C3C2C#N
+Skipping molecule: 432 | SMILES: C#CC1C2C3OCC3N12
+Skipping molecule: 487 | SMILES: OC1C2NC1C21CO1
+Skipping molecule: 449 | SMILES: C1OC2C3OC4C3NC124
+Skipping molecule: 381 | SMILES: CC1C2C3(C)CC2(C)N13
+Skipping molecule: 503 | SMILES: NC12CN=C3OC1C23O
+Skipping molecule: 508 | SMILES: OC12C3NC1C1(CO1)C23
+Skipping molecule: 501 | SMILES: CC1N2C3CC2C13O
+Skipping molecule: 475 | SMILES: CC1OC23COC2CC13
+Skipping molecule: 596 | SMILES: CCC12CC3C(O1)C23
+Skipping molecule: 593 | SMILES: N#CCC12C3CC1CC23
+Skipping molecule: 540 | SMILES: CC1C=C2C3C4C3N1C24
+Skipping molecule: 582 | SMILES: C1C2N3C1C21CC=CC31
+Skipping molecule: 613 | SMILES: CC12CC3(CC1N23)C=O
+Skipping molecule: 612 | SMILES: OC1C2C3C2C2C3CC12
+Skipping molecule: 650 | SMILES: C1C2COC3=C2N1N=N3
+Skipping molecule: 636 | SMILES: C1N2C3CC4COC13C24
+Skipping molecule: 712 | SMILES: CC1N2C3C(C2=O)C13C
+Skipping molecule: 661 | SMILES: CC1OC2CC(C#C)C12
+Skipping molecule: 726 | SMILES: CC1(O)CN2CC(O)C12
+Skipping molecule: 667 | SMILES: OC12COC1C1CCC21
+Skipping molecule: 754 | SMILES: O=CC12C3CN1C(=O)C23
+Skipping molecule: 658 | SMILES: C1CC11C2OC1C21CN1
+Skipping molecule: 752 | SMILES: N=C1NC2C(OC12)C#C
+Skipping molecule: 722 | SMILES: CC12CC3OC1C3CO2
+Skipping molecule: 759 | SMILES: C1C2C3N=C4OCC13C24
+Skipping molecule: 676 | SMILES: CC12COC11CC2CC1
+Skipping molecule: 743 | SMILES: CC1C2CC3N2C13CO
+Skipping molecule: 775 | SMILES: C1NC23C1NC1C2OC31
+Skipping molecule: 780 | SMILES: CC12OC3C4C(OC14)C23
+Skipping molecule: 772 | SMILES: CC1CC23CC4C2C1N34
+Skipping molecule: 789 | SMILES: CC1(C)C2OC3C2C13O
+Skipping molecule: 747 | SMILES: CC1(C)CC2C(O)CC12
+Skipping molecule: 782 | SMILES: CN1C2C1C1(C)OCC21
+Skipping molecule: 793 | SMILES: CCOCC1C2CN1C2
+Skipping molecule: 841 | SMILES: CC1C2OC1C2C(C)=O
+Skipping molecule: 798 | SMILES: CC12COC1C1C(O)C21
+Skipping molecule: 792 | SMILES: CCC12CC3C1C(C)N23
+Skipping molecule: 818 | SMILES: OCC12C3CC1(O)CN23
+Skipping molecule: 839 | SMILES: CCOC12CN(C1)C2
+Skipping molecule: 833 | SMILES: CC12CC3(O)C4C(C13)N24
+Skipping molecule: 868 | SMILES: CC1C2C(=O)C1C2(C)C
+Skipping molecule: 883 | SMILES: O=CC12CCC1C(=O)N2
+Skipping molecule: 874 | SMILES: CC1(CC=O)C2CN1C2
+Skipping molecule: 880 | SMILES: CCC12C3CC1OC2C3
+Saving data.
+Dataset Name: QM9
+Number of Molecules Loaded: 810
+===================================
+Loading Raw Data and processing it
+Initializing Molecular Representation Generator
+Loading Molecular Representations
+Skipping molecule: 27 | SMILES: N#CC1OC2C3CC2C13
+Skipping molecule: 35 | SMILES: CC(=O)C1(O)C2CC1O2
+Skipping molecule: 9 | SMILES: C1OC2C3NC4C3OC124
+Skipping molecule: 29 | SMILES: CC12NC3C(NC13)C2=O
+Skipping molecule: 2 | SMILES: C#CC12OC1C1CCC21
+Skipping molecule: 22 | SMILES: OC1CC2(O)C3CN3C12
+Skipping molecule: 73 | SMILES: CC(O)C1(O)C2CC1O2
+Skipping molecule: 77 | SMILES: OC12CC3CC1C=CC23
+Skipping molecule: 33 | SMILES: CC1CC23CC(C=C2)C13
+Skipping molecule: 46 | SMILES: CC1C2CC3OC1C23C
+Saving data.
+Dataset Name: QM9
+Number of Molecules Loaded: 90
+Atomic Features: torch.Size([15, 154]) - This represents the atomic features of the molecule
+Bond Features: torch.Size([32, 10]) - This represents the bond features of the molecule
+Angle Features: torch.Size([58]) - This represents the angle features of the molecule
+Dihedral Features: torch.Size([96]) - This represents the dihedral features of the molecule
+Global Molecular Features: torch.Size([200]) - This represents the global molecular features of the molecule
+Bond Indices: torch.Size([32, 2]) - This represents the bond indices of the molecule
+Angle Indices: torch.Size([58, 2]) - This represents the angle indices of the molecule
+Dihedral Indices: torch.Size([96, 2]) - This represents the dihedral indices of the molecule
+Target: torch.Size([1]) - This represents the target of the molecule
