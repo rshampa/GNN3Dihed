@@ -1,17 +1,25 @@
 cpu
 Train and test datasets saved successfully.
-Loading dataset from folder
+Loading Raw Data and processing it
 Initializing Molecular Representation Generator
+Loading Molecular Representations
+Skipping molecule: 95 | SMILES: CCCCOC(=O)C
+Skipping molecule: 215 | SMILES: CCCNCCC
+Skipping molecule: 518 | SMILES: CCCN(CCC)c1c(cc(cc1[N+](=O)[O-])S(=O)(=O)C)[N+](=O)[O-]
+Saving data.
 Dataset Name: FreeSolv
-Number of Molecules Loaded: 577
+Number of Molecules Loaded: 574
 ===================================
-Loading dataset from folder
+Loading Raw Data and processing it
 Initializing Molecular Representation Generator
+Loading Molecular Representations
+Skipping molecule: 0 | SMILES: CCCCN(CC)C(=O)SCCC
+Saving data.
 Dataset Name: FreeSolv
-Number of Molecules Loaded: 65
+Number of Molecules Loaded: 64
 Atomic Features: torch.Size([5, 154]) - This represents the atomic features of the molecule
-Bond Features: torch.Size([8, 10]) - This represents the bond features of the molecule
-Angle Features: torch.Size([12]) - This represents the angle features of the molecule
+Bond Features: torch.Size([8, 11]) - This represents the bond features of the molecule
+Angle Features: torch.Size([12, 36]) - This represents the angle features of the molecule
 Dihedral Features: torch.Size([0]) - This represents the dihedral features of the molecule
 Global Molecular Features: torch.Size([200]) - This represents the global molecular features of the molecule
 Bond Indices: torch.Size([8, 2]) - This represents the bond indices of the molecule
