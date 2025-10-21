@@ -16,7 +16,7 @@ from torch.utils.data import Dataset, DataLoader, Subset
 from scipy.stats import pearsonr
 from tqdm import tqdm
 from model import AtomAutoencoder,BondAutoencoder
-from model import GNNBondAngle,GNN2D,GNN3D,GNN3DAtnON,GNN3DAtnOFF,GNN3Dihed,GNN3DConfig,GNN3DLayer,GNN3DClassifier
+from model import GNNAtomBond,GNNBondAngle,GNNAtomBondAngle,GNN3DihedAtnOFF,GNN3Dihed,GNN3DConfig,GNN3DLayer,GNN3DClassifier
 
 import matplotlib.pyplot as plt
 from rdkit import Chem
@@ -507,7 +507,7 @@ def main():
         train_part_samples, val_samples = train_test_split(train_samples, test_size=0.1, random_state=random_state)
        #train_part_samples, val_samples = train_test_split(subset_samples, test_size=0.1, random_state=random_state)
         atom_autoencoder = AtomAutoencoder(154, latent_atomic_vector_size).to(device)
-        bond_autoencoder = BondAutoencoder(10, latent_bond_vector_size).to(device)
+        bond_autoencoder = BondAutoencoder(11, latent_bond_vector_size).to(device)
 
         gnn3d_config = GNN3DConfig(latent_atomic_vector_size, latent_bond_vector_size, number_of_molecular_features)
         gnn3d_classifier = GNN3DClassifier(gnn3d_config, number_of_classes)

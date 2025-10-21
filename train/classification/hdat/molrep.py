@@ -16,7 +16,7 @@ from torch.utils.data import Dataset, DataLoader, Subset
 from scipy.stats import pearsonr
 from tqdm import tqdm
 from model import AtomAutoencoder,BondAutoencoder
-from model import GNNBondAngle,GNN2D,GNN3D,GNN3DAtnON,GNN3DAtnOFF,GNN3Dihed,GNN3DConfig,GNN3DLayer,GNN3DClassifier
+from model import GNNAtomBond,GNNBondAngle,GNNAtomBondAngle,GNN3DihedAtnOFF,GNN3Dihed,GNN3DConfig,GNN3DLayer,GNN3DClassifier
 
 import matplotlib.pyplot as plt
 from rdkit import Chem

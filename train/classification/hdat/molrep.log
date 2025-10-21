@@ -1,18 +1,26 @@
 cpu
 Train and test datasets saved successfully.
-Loading dataset from folder
+Loading Raw Data and processing it
 Initializing Molecular Representation Generator
+Loading Molecular Representations
+Skipping molecule: 124 | SMILES: COC(=O)C1C(c2ccc(C)cc2)CC2CCC1N2CC=CCF
+Skipping molecule: 224 | SMILES: COC(=O)C1C(c2ccc(F)cc2)CC2CCC1N2CCCF
+Skipping molecule: 234 | SMILES: Fc1ccc(CCNC2CCN(CCOC(c3ccccc3)c3ccccc3)CC2)cc1
+Saving data.
 Dataset Name: ToxQ
-Number of Molecules Loaded: 452
+Number of Molecules Loaded: 449
 ===================================
-Loading dataset from folder
+Loading Raw Data and processing it
 Initializing Molecular Representation Generator
+Loading Molecular Representations
+Skipping molecule: 7 | SMILES: c1ccc(CCCNC2CCN(CCOC(c3ccccc3)c3ccccc3)CC2)cc1
+Saving data.
 Dataset Name: ToxQ
-Number of Molecules Loaded: 51
+Number of Molecules Loaded: 50
 Atomic Features: torch.Size([46, 154]) - This represents the atomic features of the molecule
-Bond Features: torch.Size([98, 10]) - This represents the bond features of the molecule
-Angle Features: torch.Size([188]) - This represents the angle features of the molecule
-Dihedral Features: torch.Size([324]) - This represents the dihedral features of the molecule
+Bond Features: torch.Size([98, 11]) - This represents the bond features of the molecule
+Angle Features: torch.Size([188, 36]) - This represents the angle features of the molecule
+Dihedral Features: torch.Size([324, 36]) - This represents the dihedral features of the molecule
 Global Molecular Features: torch.Size([200]) - This represents the global molecular features of the molecule
 Bond Indices: torch.Size([98, 2]) - This represents the bond indices of the molecule
 Angle Indices: torch.Size([188, 2]) - This represents the angle indices of the molecule
