@@ -105,6 +105,12 @@ class MolecularGraphGenerator:
         if data_loader_explicit_hydrogens:
             molecule = Chem.AddHs(molecule)
 
+        # Generating conformers ONCE for ALL
+        params = Chem.rdDistGeom.srETKDGv3()
+        params.randomSeed = 12412
+        params.clearConfs = True
+        AllChem.EmbedMultipleConfs(molecule, self.config.num_conformer_samples, params=params)
+
         #print("Hydrogens Added, current time: ", time.strftime("%H:%M:%S", time.localtime()))
 
         # Using self.mol2data to get the atomic, bond and angle features
@@ -124,6 +130,8 @@ class MolecularGraphGenerator:
       #print("Making First Graph, current time: ", time.strftime("%H:%M:%S", time.localtime()))
       # Computing atomic features
       atomic_vectors = [self.get_atomic_features(atom) for atom in mol.GetAtoms()]
+
+      self.mol = mol
 
       # Computing bond features
       bond_indices  = []
@@ -182,13 +190,6 @@ class MolecularGraphGenerator:
 
         angles = []
 
-        #AllChem.Compute2DCoords(mol)
-        #AllChem.EmbedMultipleConfs(mol, conformer_samples)#, randomSeed=0xf00d)
-        params = Chem.rdDistGeom.srETKDGv3()
-        params.randomSeed = 12412
-        params.clearConfs = True
-        AllChem.EmbedMultipleConfs(mol, self.config.num_conformer_samples, params=params)
-
         for bond_pair in bond_pairs:
           # Extracting the atoms from the bond indices
           atom1 = bond_indices[bond_pair[0]][0]
@@ -199,20 +200,13 @@ class MolecularGraphGenerator:
 
           for i in range(self.config.num_conformer_samples):
             conformer = mol.GetConformer(i)
-            #angle += (Chem.rdMolTransforms.GetAngleDeg(conformer, atom1, atom2, atom3) - 180) / 180;
             angle_per_conf = Chem.rdMolTransforms.GetAngleDeg(conformer, atom1, atom2, atom3)
             angle.append(angle_per_conf)
 
-          #===========================================#
-          """ Calculate mean (dihedral) angle within the bin that has the maximum count in its histogram"""
-          n, bins_edges = np.histogram(angle, bins=36)
-          max_count_bin = np.argmax(n)
-          bin_left_edge = bins_edges[max_count_bin]
-          bin_right_edge = bins_edges[max_count_bin + 1]
-          mean_angle = np.mean([angle_elem for angle_elem in angle if bin_left_edge <= angle_elem < bin_right_edge])
-          angles.append(mean_angle)
-          #===========================================#
-          #angles.append(angle / conformer_samples)
+          # 36-angles ================================#
+          hist_angle, bins_edges = np.histogram(angle, bins=36)
+          angles.append(hist_angle)
+          # 36-angles ================================#
 
         return angles
 
@@ -221,12 +215,6 @@ class MolecularGraphGenerator:
         mol, bond_indices, angle_indices, angle_pairs = args
 
         dihedral_angles = []
-
-        #AllChem.EmbedMultipleConfs(mol, conformer_samples)#, randomSeed=0xef00d)
-        params = Chem.rdDistGeom.srETKDGv3()
-        params.randomSeed = 12412
-        params.clearConfs = True
-        AllChem.EmbedMultipleConfs(mol, self.config.num_conformer_samples, params=params)
 
         for angle_pair in angle_pairs:
           # Extracting the 3 bonds
@@ -247,20 +235,13 @@ class MolecularGraphGenerator:
 
           for i in range(self.config.num_conformer_samples):
             conformer = mol.GetConformer(i)
-            #dihedral_angle += (Chem.rdMolTransforms.GetDihedralDeg(conformer, atom1, atom2, atom3, atom4) - 180) / 180
             dihedral_angle_per_conf = Chem.rdMolTransforms.GetDihedralDeg(conformer, atom1, atom2, atom3, atom4)
             dihedral_angle.append(dihedral_angle_per_conf)
 
-          #===========================================#
-          """ Calculate mean (dihedral) angle within the bin that has the maximum count in its histogram"""
-          n, bins_edges = np.histogram(dihedral_angle, bins=36)
-          max_count_bin = np.argmax(n)
-          bin_left_edge = bins_edges[max_count_bin]
-          bin_right_edge = bins_edges[max_count_bin + 1]
-          mean_dihed = np.mean([dihed for dihed in dihedral_angle if bin_left_edge <= dihed < bin_right_edge])
-          dihedral_angles.append(mean_dihed)
-          #===========================================#
-          #dihedral_angles.append(dihedral_angle / conformer_samples)
+          # 36-dihedrals =============================#
+          hist_dihed, bins_edges = np.histogram(dihedral_angle, bins=36)
+          dihedral_angles.append(hist_dihed)
+          # 36-dihedrals =============================#
 
         return dihedral_angles
 
@@ -322,14 +303,26 @@ class MolecularGraphGenerator:
       # except that it is for bond featurization
 
 
+      mol = self.mol
+
       bond_type_enc = one_hot_encode(bond.GetBondType(), self.config["bond_types"])
       bond_is_conj_enc = [int(bond.GetIsConjugated())]
       bond_is_in_ring_enc = [int(bond.IsInRing())]
 
       bond_feature_vector = bond_type_enc + bond_is_conj_enc + bond_is_in_ring_enc
 
+      # continuous features (mean bond length over multiple conformers)
+      atom_id_1 = bond.GetBeginAtomIdx()
+      atom_id_2 = bond.GetEndAtomIdx()
+
+      bond_lengths = [
+          Chem.rdMolTransforms.GetBondLength(mol.GetConformer(i), atom_id_1, atom_id_2)
+          for i in range(self.config.num_conformer_samples)
+      ]
+      bond_feature_vector.append(float(np.mean(bond_lengths)))
+
       if data_loader_use_stereochemistry == True:
           stereo_type_enc = one_hot_encode(str(bond.GetStereo()), self.config["stereochemistry"])
           bond_feature_vector += stereo_type_enc
 
-      return np.array(bond_feature_vector)
+      return np.array(bond_feature_vector, dtype=np.float32)
