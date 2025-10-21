@@ -223,56 +223,15 @@ class DMPNNLayer(nn.Module):
         return new_node_vectors
 
 
-class GNN3D(nn.Module):
-
-    def __init__(self, atomic_vector_size, bond_vector_size, number_of_molecular_features, number_of_targets, number_of_message_passes = 3):
-        super().__init__()
-        # It is assumed that the size of angles is 1.
-
-        self.atom_bond_operator = DMPNNLayer(atomic_vector_size, bond_vector_size)
-        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 1)
-        self.angle_dihedral_operator = DMPNNLayer(1, 1)
-        #self.readout_aggregator = AggregateSelfAttention(atomic_vector_size)
-        self.readout = torch.nn.Sequential(
-            torch.nn.Linear(atomic_vector_size + number_of_molecular_features, 30),
-            torch.nn.LeakyReLU(),
-            torch.nn.Linear(30, number_of_targets)
-            )
-
-        self.number_of_message_passes = number_of_message_passes
-
-
-    def forward(self, x):
-        atomic_features, bond_features, angle_features, dihedral_features, global_molecular_features, bond_indices, angle_indices, dihedral_indices = x
-
-        for _ in range(self.number_of_message_passes):
-            #if dihedral_features.size()[0] != 0:
-            #    angle_features = self.angle_dihedral_operator([torch.reshape(angle_features, [-1, 1]), torch.reshape(dihedral_features, [-1, 1]), dihedral_indices])
-
-            bond_features = self.bond_angle_operator([bond_features, torch.reshape(angle_features, [-1, 1]), angle_indices])
-            atomic_features = self.atom_bond_operator([atomic_features, bond_features, bond_indices])
-
-        # Summing the atomic features
-        readout_vector = torch.sum(atomic_features, dim = 0)
-        #readout_vector = self.readout_aggregator(atomic_features)
-        # print("readout_vector shape:", readout_vector.shape)
-        # print("readout_vector:", readout_vector)
-
-        # Concatenating readout_vector with global molecular features
-        readout_vector = torch.cat([readout_vector, global_molecular_features])
-
-        return self.readout(readout_vector)
-
-
 class GNN3Dihed(nn.Module):
 
     def __init__(self, atomic_vector_size, bond_vector_size, number_of_molecular_features, number_of_targets, number_of_message_passes = 3):
         super().__init__()
-        # It is assumed that the size of angles is 1.
+        # It is assumed that the size of angles is 1. Earlier it was true as most probable angle was considerd. For multiple conformers, now 36-angles corresponding to 36-bins
 
         self.atom_bond_operator = DMPNNLayer(atomic_vector_size, bond_vector_size)
-        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 1)
-        self.angle_dihedral_operator = DMPNNLayer(1, 1)
+        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 36)  # angle feature size = 36
+        self.angle_dihedral_operator = DMPNNLayer(36, 36)            # both angle and dihedral are 36-dim
         self.readout_aggregator = AggregateSelfAttention(atomic_vector_size)
         self.readout = torch.nn.Sequential(
             torch.nn.Linear(atomic_vector_size + number_of_molecular_features, 30),
@@ -288,16 +247,13 @@ class GNN3Dihed(nn.Module):
 
         for _ in range(self.number_of_message_passes):
             if dihedral_features.size()[0] != 0:
-                angle_features = self.angle_dihedral_operator([torch.reshape(angle_features, [-1, 1]), torch.reshape(dihedral_features, [-1, 1]), dihedral_indices])
+                angle_features = self.angle_dihedral_operator([angle_features, dihedral_features, dihedral_indices])
 
-            bond_features = self.bond_angle_operator([bond_features, torch.reshape(angle_features, [-1, 1]), angle_indices])
+            bond_features = self.bond_angle_operator([bond_features, angle_features, angle_indices])
             atomic_features = self.atom_bond_operator([atomic_features, bond_features, bond_indices])
 
         # Summing the atomic features
-        #readout_vector = torch.sum(atomic_features, dim = 0)
         readout_vector = self.readout_aggregator(atomic_features)
-        # print("readout_vector shape:", readout_vector.shape)
-        # print("readout_vector:", readout_vector)
 
         # Concatenating readout_vector with global molecular features
         readout_vector = torch.cat([readout_vector, global_molecular_features])
@@ -305,15 +261,14 @@ class GNN3Dihed(nn.Module):
         return self.readout(readout_vector)
 
 
-class GNN3DAtnON(nn.Module):
+class GNNAtomBondAngle(nn.Module):
 
     def __init__(self, atomic_vector_size, bond_vector_size, number_of_molecular_features, number_of_targets, number_of_message_passes = 3):
         super().__init__()
-        # It is assumed that the size of angles is 1.
 
         self.atom_bond_operator = DMPNNLayer(atomic_vector_size, bond_vector_size)
-        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 1)
-        self.angle_dihedral_operator = DMPNNLayer(1, 1)
+        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 36)  # angle feature size = 36
+        self.angle_dihedral_operator = DMPNNLayer(36, 36)            # both angle and dihedral are 36-dim
         self.readout_aggregator = AggregateSelfAttention(atomic_vector_size)
         self.readout = torch.nn.Sequential(
             torch.nn.Linear(atomic_vector_size + number_of_molecular_features, 30),
@@ -325,20 +280,15 @@ class GNN3DAtnON(nn.Module):
 
 
     def forward(self, x):
-        atomic_features, bond_features, angle_features, dihedral_features, global_molecular_features, bond_indices, angle_indices, dihedral_indices = x
+        atomic_features, bond_features, angle_features, global_molecular_features, bond_indices, angle_indices = x
 
         for _ in range(self.number_of_message_passes):
-            #if dihedral_features.size()[0] != 0:
-            #    angle_features = self.angle_dihedral_operator([torch.reshape(angle_features, [-1, 1]), torch.reshape(dihedral_features, [-1, 1]), dihedral_indices])
 
-            bond_features = self.bond_angle_operator([bond_features, torch.reshape(angle_features, [-1, 1]), angle_indices])
+            bond_features = self.bond_angle_operator([bond_features, angle_features, angle_indices])
             atomic_features = self.atom_bond_operator([atomic_features, bond_features, bond_indices])
 
         # Summing the atomic features
-        #readout_vector = torch.sum(atomic_features, dim = 0)
         readout_vector = self.readout_aggregator(atomic_features)
-        # print("readout_vector shape:", readout_vector.shape)
-        # print("readout_vector:", readout_vector)
 
         # Concatenating readout_vector with global molecular features
         readout_vector = torch.cat([readout_vector, global_molecular_features])
@@ -346,15 +296,14 @@ class GNN3DAtnON(nn.Module):
         return self.readout(readout_vector)
 
 
-class GNN3DAtnOFF(nn.Module):
+class GNN3DihedAtnOFF(nn.Module):
 
     def __init__(self, atomic_vector_size, bond_vector_size, number_of_molecular_features, number_of_targets, number_of_message_passes = 3):
         super().__init__()
-        # It is assumed that the size of angles is 1.
 
         self.atom_bond_operator = DMPNNLayer(atomic_vector_size, bond_vector_size)
-        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 1)
-        self.angle_dihedral_operator = DMPNNLayer(1, 1)
+        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 36)  # angle feature size = 36
+        self.angle_dihedral_operator = DMPNNLayer(36, 36)            # both angle and dihedral are 36-dim
         #self.readout_aggregator = AggregateSelfAttention(atomic_vector_size)
         self.readout = torch.nn.Sequential(
             torch.nn.Linear(atomic_vector_size + number_of_molecular_features, 30),
@@ -370,16 +319,13 @@ class GNN3DAtnOFF(nn.Module):
 
         for _ in range(self.number_of_message_passes):
             if dihedral_features.size()[0] != 0:
-                angle_features = self.angle_dihedral_operator([torch.reshape(angle_features, [-1, 1]), torch.reshape(dihedral_features, [-1, 1]), dihedral_indices])
+                angle_features = self.angle_dihedral_operator([angle_features, dihedral_features, dihedral_indices])
 
-            bond_features = self.bond_angle_operator([bond_features, torch.reshape(angle_features, [-1, 1]), angle_indices])
+            bond_features = self.bond_angle_operator([bond_features, angle_features, angle_indices])
             atomic_features = self.atom_bond_operator([atomic_features, bond_features, bond_indices])
 
         # Summing the atomic features
         readout_vector = torch.sum(atomic_features, dim = 0)
-        #readout_vector = self.readout_aggregator(atomic_features)
-        # print("readout_vector shape:", readout_vector.shape)
-        # print("readout_vector:", readout_vector)
 
         # Concatenating readout_vector with global molecular features
         readout_vector = torch.cat([readout_vector, global_molecular_features])
@@ -410,15 +356,11 @@ class GNN3DLayer(nn.Module):
         super().__init__()
         self.config = config
 
-
-        # Setting up components
-        # It is assumed that the size of angles is 1.
-
         self.atom_bond_operator = DMPNNLayer(config.atomic_vector_size, config.bond_vector_size)
         if config.use_bond_angles:
-            self.bond_angle_operator = DMPNNLayer(config.bond_vector_size, 1)
+            self.bond_angle_operator = DMPNNLayer(config.bond_vector_size, 36)  # angle feature size = 36
         if config.use_dihedral_angles:
-            self.angle_dihedral_operator = DMPNNLayer(1, 1)
+            self.angle_dihedral_operator = DMPNNLayer(36, 36)                   # both angle and dihedral are 36-dim
 
         self.readout_aggregator = AggregateSelfAttention(config.atomic_vector_size) if config.use_attention_based_readout else None
 
@@ -427,10 +369,10 @@ class GNN3DLayer(nn.Module):
 
         for _ in range(self.config.number_of_message_passes):
             if self.config.use_dihedral_angles and dihedral_features.size()[0] != 0:
-                angle_features = self.angle_dihedral_operator([torch.reshape(angle_features, [-1, 1]), torch.reshape(dihedral_features, [-1, 1]), dihedral_indices])
+                angle_features = self.angle_dihedral_operator([angle_features, dihedral_features, dihedral_indices])
 
             if self.config.use_bond_angles:
-                bond_features = self.bond_angle_operator([bond_features, torch.reshape(angle_features, [-1, 1]), angle_indices])
+                bond_features = self.bond_angle_operator([bond_features, angle_features, angle_indices])
             atomic_features = self.atom_bond_operator([atomic_features, bond_features, bond_indices])
 
         # Summing the atomic features
@@ -484,7 +426,6 @@ class GNN3DMultiTaskClassifier(torch.nn.Module):
             )
             for num_classes in number_of_classes_per_task
         ])
-       #print(f"No. of Tasks: {len(self.classifier_heads)}")
 
     def forward(self, x):
         """
@@ -503,7 +444,7 @@ class GNN3DMultiTaskClassifier(torch.nn.Module):
         return tuple(task_outputs)
 
 
-class GNN2D(nn.Module):
+class GNNAtomBond(nn.Module):
 
     def __init__(self, atomic_vector_size, bond_vector_size, number_of_molecular_features, number_of_targets, number_of_message_passes = 3):
         super().__init__()
@@ -537,8 +478,8 @@ class GNNBondAngle(nn.Module):
         super().__init__()
 
         self.atom_bond_operator = DMPNNLayer(atomic_vector_size, bond_vector_size)
-        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 1)
-        self.angle_dihedral_operator = DMPNNLayer(1, 1)
+        self.bond_angle_operator = DMPNNLayer(bond_vector_size, 36)  # angle feature size = 36
+        self.angle_dihedral_operator = DMPNNLayer(36, 36)            # both angle and dihedral are 36-dim
         self.readout_aggregator = AggregateSelfAttention(bond_vector_size)
         self.readout = torch.nn.Sequential(
             torch.nn.Linear(bond_vector_size + number_of_molecular_features, 30),
@@ -553,7 +494,7 @@ class GNNBondAngle(nn.Module):
         bond_features, angle_features, global_molecular_features, angle_indices = x
 
         for _ in range(self.number_of_message_passes):
-            bond_features = self.bond_angle_operator([bond_features, torch.reshape(angle_features, [-1, 1]), angle_indices])
+            bond_features = self.bond_angle_operator([bond_features, angle_features, angle_indices])
 
         readout_vector = self.readout_aggregator(bond_features)
         readout_vector = torch.cat([readout_vector, global_molecular_features])
