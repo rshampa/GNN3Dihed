@@ -1,6 +1,6 @@
 # GNN3Dihed: Graph neural network for 3-dimensional structures including dihedral angles for molecular property prediction
 
-  ChemRxiv: https://doi.org/10.26434/chemrxiv-2024-jlwh5
+  https://doi.org/10.1002/jcc.70121
 
 ## Directory Structure
 
